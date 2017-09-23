@@ -8,10 +8,8 @@ axios.get('http://invoice.etax.nat.gov.tw/')
         $(body.data).find('.t18Red')
             .each((i,e)=>{
                 if(i<=3){
-                    if(e.innerText.includes('、'))
-                        number.concat(e.innerText.split('、'))
-                    else
-                        number.push(e.innerText)
+                    let str = e.innerText.split('、')
+                    Array.isArray(str) ? (number = number.concat(str)) : number.push(str)
                 } 
             })
     })
